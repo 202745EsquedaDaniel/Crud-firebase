@@ -1,6 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -32,10 +30,25 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: ListTile(
-                  leading: Icon(Icons.home),
-                  title: Text("H O M E"),
+                  leading: const Icon(Icons.home),
+                  title: const Text("H O M E"),
                   onTap: () {
                     Navigator.pop(context);
+                  },
+                ),
+              ),
+
+//wall title
+              Padding(
+                padding: const EdgeInsets.only(left: 25),
+                child: ListTile(
+                  leading: const Icon(Icons.note),
+                  title: const Text("W A L L"),
+                  onTap: () {
+                    Navigator.pop(context);
+
+                    // navigate to profile page
+                    Navigator.pushNamed(context, "/notes_page");
                   },
                 ),
               ),
@@ -43,8 +56,8 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text("P R O F I L E"),
+                  leading: const Icon(Icons.person),
+                  title: const Text("P R O F I L E"),
                   onTap: () {
                     Navigator.pop(context);
 
@@ -58,8 +71,8 @@ class MyDrawer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: ListTile(
-                  leading: Icon(Icons.group),
-                  title: Text("U S E R S"),
+                  leading: const Icon(Icons.group),
+                  title: const Text("U S E R S"),
                   onTap: () {
                     Navigator.pop(context);
 
@@ -75,8 +88,8 @@ class MyDrawer extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 25, bottom: 25),
             child: ListTile(
-              leading: Icon(Icons.home),
-              title: Text("L O G O U T"),
+              leading: const Icon(Icons.home),
+              title: const Text("L O G O U T"),
               onTap: () {
                 Navigator.pop(context);
 

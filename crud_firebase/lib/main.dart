@@ -2,9 +2,8 @@ import 'package:crud_firebase/auth/auth.dart';
 import 'package:crud_firebase/auth/login_or_register.dart';
 import 'package:crud_firebase/firebase_options.dart';
 import 'package:crud_firebase/pages/home_page.dart';
-import 'package:crud_firebase/pages/login_page.dart';
+import 'package:crud_firebase/pages/notes_page.dart';
 import 'package:crud_firebase/pages/profile_page.dart';
-import 'package:crud_firebase/pages/register_page.dart';
 import 'package:crud_firebase/pages/users_page.dart';
 import 'package:crud_firebase/theme/dark_mode.dart';
 import 'package:crud_firebase/theme/light_mode.dart';
@@ -25,13 +24,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: AuthPage(),
+      home: const AuthPage(),
       theme: lightMode,
       darkTheme: darkMode,
       routes: {
         "/login_register_page": (context) => const LoginOrRegiste(),
+        "/notes_page": (context) => NotesPage(),
         "/home_page": (context) => const HomePage(),
-        "/profile_page": (context) => const ProfilePage(),
+        "/profile_page": (context) => ProfilePage(),
         "/users_page": (context) => const UsersPage()
       },
     );

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crud_firebase/components/my_button.dart';
 import 'package:crud_firebase/components/my_textfield.dart';
 import 'package:crud_firebase/helper/helper_functions.dart';
@@ -53,7 +54,10 @@ class _RegisterPageState extends State<RegisterPage> {
           password: passwordController.text,
         );
 
-        Navigator.pop(context);
+        //create a user document and add to fiestone
+        createUserDocument(userCredential);
+
+        if (context.mounted) Navigator.pop(context);
       } on FirebaseAuthException catch (e) {
         //pop loading circle
         Navigator.pop(context);
@@ -61,6 +65,19 @@ class _RegisterPageState extends State<RegisterPage> {
         //show error message
         displayMessageToUser(e.code, context);
       }
+    }
+  }
+
+  //crate user document and collect them in firestone
+  Future<void> createUserDocument(UserCredential? userCredential) async {
+    if (userCredential != null && userCredential.user != null) {
+      await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(userCredential.user!.email)
+          .set({
+        "email": userCredential.user!.email,
+        "username": usernameController.text,
+      });
     }
   }
 

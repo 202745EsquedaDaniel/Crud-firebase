@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crud_firebase/components/my_drawer.dart';
 import 'package:crud_firebase/services/firestone.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -38,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                       //close the dialog box
                       Navigator.pop(context);
                     },
-                    child: Text(("add")))
+                    child: const Text(("add")))
               ],
             ));
   }
@@ -47,11 +46,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Notes'),
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: const Text('N O T E S'),
+        backgroundColor: Colors.transparent,
+        foregroundColor: Theme.of(context).colorScheme.inversePrimary,
         elevation: 0,
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: openNoteBox,
         child: const Icon(Icons.add),
@@ -83,11 +83,11 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           IconButton(
                               onPressed: () => openNoteBox(docID: docID),
-                              icon: Icon(Icons.settings)),
+                              icon: const Icon(Icons.settings)),
                           IconButton(
                               onPressed: () =>
                                   firestoneService.deleteNote(docID),
-                              icon: Icon(Icons.delete)),
+                              icon: const Icon(Icons.delete)),
                         ],
                       ),
                     );
