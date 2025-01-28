@@ -1,11 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crud_firebase/components/my_back_button.dart';
 import 'package:crud_firebase/components/my_list_tile.dart';
 import 'package:crud_firebase/components/my_post_button.dart';
 import 'package:crud_firebase/components/my_textfield.dart';
 import 'package:crud_firebase/services/notes.firestone.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class NotesPage extends StatelessWidget {
   NotesPage({super.key});
@@ -97,7 +95,6 @@ class NotesPage extends StatelessWidget {
                         //get data from each post
                         String message = post["PostMessage"];
                         String userEmail = post["UserEmail"];
-                        Timestamp timestamp = post["TimeStamp"];
 
                         //return as a list tile
                         return MyListTile(title: message, subtitle: userEmail);

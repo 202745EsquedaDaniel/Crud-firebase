@@ -2,9 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:crud_firebase/components/my_back_button.dart';
 import 'package:crud_firebase/components/my_list_tile.dart';
 import 'package:crud_firebase/helper/helper_functions.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class UsersPage extends StatelessWidget {
   const UsersPage({super.key});
@@ -37,8 +35,8 @@ class UsersPage extends StatelessWidget {
           return Column(
             children: [
               //back button
-              Padding(
-                padding: const EdgeInsets.only(
+              const Padding(
+                padding: EdgeInsets.only(
                   top: 50,
                   left: 25,
                 ),
@@ -47,7 +45,7 @@ class UsersPage extends StatelessWidget {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               //list of users

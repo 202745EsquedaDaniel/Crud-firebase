@@ -32,9 +32,14 @@ class _LoginPageState extends State<LoginPage> {
         password: passwordController.text,
       );
 
-      //pop loading circle
-      if (context.mounted) Navigator.pop(context);
+      // Check if the widget is still mounted before accessing context
+      if (!mounted) return;
+
+      // pop loading circle
+      Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
+      // Check if the widget is still mounted before accessing context
+      if (!mounted) return;
       Navigator.pop(context);
       displayMessageToUser(e.code, context);
     }

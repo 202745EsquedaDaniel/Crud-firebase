@@ -44,8 +44,8 @@ class ProfilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       //back button
-                      Padding(
-                        padding: const EdgeInsets.only(
+                      const Padding(
+                        padding: EdgeInsets.only(
                           top: 50,
                           left: 25,
                         ),
@@ -63,13 +63,13 @@ class ProfilePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(24),
                         ),
                         padding: const EdgeInsets.all(25),
-                        child: Icon(
+                        child: const Icon(
                           Icons.person,
                           size: 64,
                         ),
                       ),
 
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       // user
@@ -80,7 +80,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 );
               } else {
-                return Text("No data");
+                return const Text("No data");
               }
             }));
   }

@@ -3,9 +3,7 @@ import 'package:crud_firebase/components/my_button.dart';
 import 'package:crud_firebase/components/my_textfield.dart';
 import 'package:crud_firebase/helper/helper_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
@@ -28,41 +26,45 @@ class _RegisterPageState extends State<RegisterPage> {
 
   //regoster method
   void registerUser() async {
-    //show loading circle
+    // Show loading circle
     showDialog(
-        context: context,
-        builder: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ));
+      context: context,
+      builder: (context) => const Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
 
-    // make sure the password and confirm password are the same
+    // Make sure the password and confirm password are the same
     if (passwordController.text != confirmController.text) {
-      // pop loading circle
-      Navigator.pop(context);
+      // Pop loading circle
+      if (context.mounted) Navigator.pop(context);
 
-      //show error message
+      // Show error message
       displayMessageToUser("Passwords do not match", context);
     }
-    // if password and confirm password are the same
+    // If password and confirm password are the same
     else {
-      //register user
+      // Register user
       try {
-        //create the user
+        // Create the user
         UserCredential? userCredential =
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailController.text,
           password: passwordController.text,
         );
 
-        //create a user document and add to fiestone
-        createUserDocument(userCredential);
+        // Create a user document and add to Firestore
+        await createUserDocument(userCredential);
 
-        if (context.mounted) Navigator.pop(context);
-      } on FirebaseAuthException catch (e) {
-        //pop loading circle
+        // Check if the widget is still mounted before accessing context
+        if (!mounted) return;
+
         Navigator.pop(context);
+      } on FirebaseAuthException catch (e) {
+        // Pop loading circle
+        if (context.mounted) Navigator.pop(context);
 
-        //show error message
+        // Show error message
         displayMessageToUser(e.code, context);
       }
     }
